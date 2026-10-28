@@ -1,0 +1,3 @@
+# Runtime is offline after these packages are installed.
+opencv-python-headless>=4.8,<5
+numpy>=1.24,<3

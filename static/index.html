@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f5">
+  <meta name="description" content="A local-first classroom attendance and activity prototype.">
+  <title>Classroom Lens — a clearer view of your classroom</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.7"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.7"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.7"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.7"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.1"/><path d="M3.5 19v-1.2c0-2.6 2.4-4.5 5.5-4.5s5.5 1.9 5.5 4.5V19M16 5.2a3 3 0 010 5.8M17 13.7c2.2.4 3.5 1.9 3.5 4V19"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 13h3l2-6 4 11 3-8 2 3h4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7.5V5.8A2.3 2.3 0 015.8 3.5h4l2 2h6.4a2.3 2.3 0 012.3 2.3v10.4a2.3 2.3 0 01-2.3 2.3H5.8a2.3 2.3 0 01-2.3-2.3V7.5z"/><path d="M3.5 9h17"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 3.1l1.4 1.3 2-.1.7 1.9 1.8 1 .1 2 1.5 1.4-.8 1.9.8 1.9-1.5 1.4-.1 2-1.8 1-.7 1.9-2-.1-1.4 1.3-1.4-1.3-2 .1-.7-1.9-1.8-1-.1-2-1.5-1.4.8-1.9-.8-1.9 1.5-1.4.1-2 1.8-1 .7-1.9 2 .1L12 3.1z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.4c0 4.5-3.2 7.8-7.5 9.6-4.3-1.8-7.5-5.1-7.5-9.6V6L12 3z"/><path d="M9 11.8l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M10 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M14 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H5m5-5l-5 5 5 5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2.8l1.7 5.5L19.2 10l-5.5 1.7-1.7 5.5-1.7-5.5L4.8 10l5.5-1.7L12 2.8zM19 14l.8 2.5 2.4.8-2.4.7-.8 2.5-.8-2.5-2.4-.7 2.4-.8L19 14z" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 10v4m4-7v10m4-13v16m4-13v10m4-7v4" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3.5" y="6" width="12" height="12" rx="2.3"/><path d="M15.5 10l5-3v10l-5-3" stroke-linejoin="round"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V4m-4 4l4-4 4 4M4.5 15v3a2 2 0 002 2h11a2 2 0 002-2v-3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m-4-4l4 4 4-4M4.5 17v1a2 2 0 002 2h11a2 2 0 002-2v-1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"/><path d="M16 16l4 4" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5m0-8h.01" stroke-linecap="round"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M4 10h16" stroke-linecap="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 4h4M7 7l1 13h8l1-13M10 10v7M14 10v7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5l10 6.5-10 6.5V5.5z" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-linecap="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3m-4 4v2" stroke-linecap="round"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20l4.3-1 10.2-10.2a2.5 2.5 0 00-3.5-3.5L4.8 15.5 4 20zM13.6 6.7l3.7 3.7" stroke-linejoin="round"/></symbol>
+  </svg>
+  <div class="app-shell">
+    <div id="mobile-scrim" class="mobile-scrim" data-action="close-sidebar"></div>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" data-action="nav" data-page="overview" aria-label="Classroom Lens home">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-word"><b>classroom</b><small>lens<span class="brand-dot">.</span></small></span>
+      </a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-action="nav" data-page="overview"><svg><use href="#i-grid"/></svg><span>Overview</span></button>
+        <button class="nav-item" data-action="nav" data-page="attendance"><svg><use href="#i-users"/></svg><span>Attendance</span></button>
+        <button class="nav-item" data-action="nav" data-page="engagement"><svg><use href="#i-wave"/></svg><span>Engagement</span></button>
+        <button class="nav-item" data-action="nav" data-page="sessions"><svg><use href="#i-folder"/></svg><span>Sessions</span></button>
+      </nav>
+      <div class="sidebar-label manage-label">MANAGE</div>
+      <nav class="side-nav" aria-label="Settings">
+        <button class="nav-item" data-action="nav" data-page="settings"><svg><use href="#i-settings"/></svg><span>Settings</span></button>
+        <button class="nav-item" data-action="guide"><svg><use href="#i-info"/></svg><span>How it works</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-card">
+          <div class="privacy-icon"><svg><use href="#i-shield"/></svg></div>
+          <div><strong>Privacy by design</strong><p>Built to run locally, on your device.</p></div>
+          <button data-action="privacy">Learn more <span>↗</span></button>
+        </div>
+        <div class="sidebar-profile"><div class="profile-avatar">CL</div><div><strong>Classroom Lens</strong><small>Prototype workspace</small></div><svg><use href="#i-chevron-down"/></svg></div>
+      </div>
+    </aside>
+    <main class="main-shell">
+      <header class="topbar">
+        <div class="topbar-left"><button class="icon-button mobile-menu" data-action="open-sidebar" aria-label="Open menu"><svg><use href="#i-menu"/></svg></button><span class="top-home">Workspace</span><svg class="crumb-chevron"><use href="#i-chevron-right"/></svg><strong id="breadcrumb">Overview</strong></div>
+        <div class="topbar-actions"><span class="local-tag"><span class="status-dot"></span> Local-first</span><button class="icon-button help-button" data-action="guide" aria-label="How it works"><svg><use href="#i-info"/></svg></button><button class="button button-primary button-top" data-action="new-session"><svg><use href="#i-plus"/></svg> New session</button></div>
+      </header>
+      <div class="content-wrap" id="content" aria-live="polite"><div class="loading-state"><span class="spinner"></span> Preparing your workspace…</div></div>
+      <footer class="app-footer"><span>© Classroom Lens · Prototype</span><span>Made for more thoughtful teaching <span class="footer-star">✳</span></span></footer>
+    </main>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-region" class="toast-region" role="status" aria-live="polite"></div>
+</body>
+</html>
